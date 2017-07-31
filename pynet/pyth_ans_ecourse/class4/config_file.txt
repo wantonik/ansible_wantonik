@@ -1,2 +1,0 @@
-logging buffered 9990
-no logging console
