@@ -1,0 +1,67 @@
+# 5d FINAL:
+# Create a final playbook that properly prints out the following variables: inventory_hostname,
+# ansible_host, local_as_number, remote_as_number, ntp_server1, and ntp_server2.
+
+
+
+(py27_venv)[wantonik@ip-172-30-0-209 class1]$ ansible-playbook -i ./my_inventory e5d2-playbook.yml 
+
+PLAY [cisco] ***********************************************************************************************
+
+TASK [Gathering Facts] *************************************************************************************
+ok: [pynet-rtr1]
+ok: [pynet-rtr2]
+
+TASK [Using debug module to print out Ansible variables for the cisco group] *******************************
+ok: [pynet-rtr1] => {
+    "msg": "184.105.247.70"
+}
+ok: [pynet-rtr2] => {
+    "msg": "184.105.247.71"
+}
+
+TASK [Print out inventory_hostname variable] ***************************************************************
+ok: [pynet-rtr1] => {
+    "msg": "pynet-rtr1"
+}
+ok: [pynet-rtr2] => {
+    "msg": "pynet-rtr2"
+}
+
+TASK [Print out local_as_number variable with debug module] ************************************************
+ok: [pynet-rtr1] => {
+    "msg": 100
+}
+ok: [pynet-rtr2] => {
+    "msg": 100
+}
+
+TASK [Print out local_as number variable with debug module] ************************************************
+ok: [pynet-rtr1] => {
+    "msg": 200
+}
+ok: [pynet-rtr2] => {
+    "msg": 300
+}
+
+TASK [Print out ntp server details for pynet-rtr1 using debug module] **************************************
+ok: [pynet-rtr1] => {
+    "msg": "20.20.20.20"
+}
+ok: [pynet-rtr2] => {
+    "msg": "20.20.20.20"
+}
+
+TASK [Print out ntp server details for pynet-rtr2 using debug module] **************************************
+ok: [pynet-rtr1] => {
+    "msg": "20.20.20.30"
+}
+ok: [pynet-rtr2] => {
+    "msg": "20.20.20.30"
+}
+
+PLAY RECAP *************************************************************************************************
+pynet-rtr1                 : ok=7    changed=0    unreachable=0    failed=0   
+pynet-rtr2                 : ok=7    changed=0    unreachable=0    failed=0   
+
+(py27_venv)[wantonik@ip-172-30-0-209 class1]$ 

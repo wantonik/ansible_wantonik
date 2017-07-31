@@ -1,0 +1,13 @@
+# 3a. Create a simple inventory file my-inventory.
+# It should have only an entry for the local group and localhost.
+
+#MY SOLUTION:
+
+[local]
+localhost ansible_connection=local ansible_python_interpreter=/home/wantonik/VENV/ansible/bin/python
+
+# As epxlained by Kirk the ansible_python_interpreter viariable has
+# to be in the same line as 'localhost', otherwise Ansible treats it
+# the second entry for the local group.
+# BTW: this inventory file is OK even when I comment out the variable
+# Ansible uses then the system's Python and not the one from virtual ENV.

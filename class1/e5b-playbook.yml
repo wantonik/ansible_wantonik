@@ -1,0 +1,11 @@
+---
+# 5. Create a new playbook that uses the debug module to print out Ansible variables.
+
+- hosts: cisco
+  tasks: 
+  - name: Using debug module to print out Ansible variables for the cisco group
+    debug:
+      msg: "{{ ansible_host }}"
+  - name: Print out local_as_number variable with debug module
+    debug:
+      msg: "{{ local_as_number }}"

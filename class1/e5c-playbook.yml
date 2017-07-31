@@ -1,0 +1,20 @@
+---
+# 5c. Add a "Host Var" for the variable remote_as_number. 
+# This variable should have a value of 200 for pynet-rtr1 and
+# a value of 300 for pynet-rtr2.
+# Once again use the debug task from exercise5 to verify you properly
+# see this variable when you execute a playbook.
+
+- hosts: cisco
+  tasks: 
+#  - name: Using debug module to print out Ansible variables for the cisco group
+#    debug:
+#      msg: "{{ ansible_host }}"
+#  - name: Print out local_as_number variable with debug module
+#    debug:
+#      msg: "{{ local_as_number }}"
+   - name: Print out local_as number variable with debug module
+     debug:
+       msg: "{{ remote_as_number }}"
+
+...

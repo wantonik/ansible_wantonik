@@ -1,0 +1,8 @@
+---
+# 3c. Create a simple Playbook that uses this inventory file and calls the ping module.
+# Verify you can execute this playbook successfully.
+
+- name: Ping the localhost from my_inventory file
+  hosts: localhost
+  tasks: 
+    - ping:

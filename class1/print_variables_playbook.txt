@@ -1,0 +1,38 @@
+In order to print out variables using the output of the below command:
+$ansible local -m setup -v
+
+Run the below command:
+(py27_venv)[wantonik@ip-172-30-0-209 class1]$ ansible-playbook -i ./my_inventory print_variables_playbook.yml 
+
+PLAY [local] ***********************************************************************************************
+
+TASK [Gathering Facts] *************************************************************************************
+ok: [localhost]
+
+TASK [Using debug module to print out Ansible variables] ***************************************************
+ok: [localhost] => {
+    "msg": "localhost"
+}
+
+TASK [Print out another variable] **************************************************************************
+ok: [localhost] => {
+    "msg": [
+        "172.30.0.209"
+    ]
+}
+
+TASK [Print out ansible_user_id variable] ******************************************************************
+ok: [localhost] => {
+    "msg": "wantonik"
+}
+
+TASK [Print out ansible_system variable] *******************************************************************
+ok: [localhost] => {
+    "msg": "Linux"
+}
+
+PLAY RECAP *************************************************************************************************
+localhost                  : ok=5    changed=0    unreachable=0    failed=0   
+
+(py27_venv)[wantonik@ip-172-30-0-209 class1]$ 
+

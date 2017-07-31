@@ -1,0 +1,53 @@
+4b. Using the command-line ansible command, make sure you can execute
+the ping module against all of the devices in the inventory file.
+Use the '-i ./my-inventory' arguments to specify the inventory file to use.
+
+MY SOLUTION:
+(py27_venv)[wantonik@ip-172-30-0-209 class1]$ ansible all -i ./my_inventory, -m ping 
+localhost | SUCCESS => {
+    "changed": false, 
+    "ping": "pong"
+}
+(py27_venv)[wantonik@ip-172-30-0-209 class1]$
+
+PROBLEMS:
+The above worked, but in fact I had 3 problems:
+1. my_inventory file had one typo error:
+ansible-connection instead of ansible_connection
+2. Also, the ansible_python_interpreter viariable was not in the same line
+as 'localhost'; therefore Ansible treated this as 2nd entry for the local group.
+3. I used to use the ansible-command with ',' [comma] before '-m ping'.
+Ignore this comma and all the ansible-commands will run OK:
+
+(py27_venv)[wantonik@ip-172-30-0-209 class1]$ ansible local -i ./my_inventory -m ping
+localhost | SUCCESS => {
+    "changed": false, 
+    "ping": "pong"
+}
+(py27_venv)[wantonik@ip-172-30-0-209 class1]$ ansible localhost -i ./my_inventory -m ping
+localhost | SUCCESS => {
+    "changed": false, 
+    "ping": "pong"
+}
+(py27_venv)[wantonik@ip-172-30-0-209 class1]$ ansible cisco -i ./my_inventory -m ping
+pynet-rtr1 | SUCCESS => {
+    "changed": false, 
+    "ping": "pong"
+}
+pynet-rtr2 | SUCCESS => {
+    "changed": false, 
+    "ping": "pong"
+}
+(py27_venv)[wantonik@ip-172-30-0-209 class1]$ ansible pynet-rtr1 -i ./my_inventory -m ping
+pynet-rtr1 | SUCCESS => {
+    "changed": false, 
+    "ping": "pong"
+}
+(py27_venv)[wantonik@ip-172-30-0-209 class1]$ ansible pynet-rtr2 -i ./my_inventory -m ping
+pynet-rtr2 | SUCCESS => {
+    "changed": false, 
+    "ping": "pong"
+}
+(py27_venv)[wantonik@ip-172-30-0-209 class1]$
+
+END/SOLVED 

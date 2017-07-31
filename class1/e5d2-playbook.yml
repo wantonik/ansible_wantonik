@@ -1,0 +1,32 @@
+---
+# 5d.version 2.
+# Create a final playbook that properly prints out the following variables:
+# inventory_hostname, ansible_host, local_as_number, remote_as_number,
+# ntp_server1, and ntp_server2.
+
+- hosts: cisco
+  vars:
+    ntp_server1: 20.20.20.20
+    ntp_server2: 20.20.20.30
+  tasks: 
+  - name: Using debug module to print out Ansible variables for the cisco group
+    debug:
+      msg: "{{ ansible_host }}"
+  - name: Print out inventory_hostname variable
+    debug:
+      msg: "{{ inventory_hostname }}"
+  - name: Print out local_as_number variable with debug module
+    debug:
+      msg: "{{ local_as_number }}"
+  - name: Print out local_as number variable with debug module
+    debug:
+      msg: "{{ remote_as_number }}"
+  - name: Print out ntp server details for pynet-rtr1 using debug module
+    debug:
+      msg: "{{ ntp_server1 }}"
+  - name: Print out ntp server details for pynet-rtr2 using debug module
+    debug:
+      msg: "{{ ntp_server2 }}"
+
+
+...

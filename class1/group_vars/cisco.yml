@@ -1,0 +1,14 @@
+---
+
+# 5b. Add a "Group Var" for the variable local_as_number with a value of 100. 
+# This variable should exist for all members of the cisco group.
+# Once again use the debug task from exercise5 to verify you properly see this
+# variable when you execute a playbook.
+# Note, the group_vars directory can exist in the same directory as your
+# inventory file or in the same directory as your playbook
+# The structure can either be ./group_vars/cisco.yml
+# (where 'cisco' is the group name) or ./groups_vars/cisco/whatever.yml
+# (where 'cisco' is the group name and then you can multiple files inside
+# this directory using whatever names you choose).
+#
+local_as_number: 100

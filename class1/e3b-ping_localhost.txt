@@ -1,0 +1,38 @@
+# 3b. Using the command-line ansible command, make sure you can execute the ping module against
+# the inventory file that you created in step 3a.
+# Use the '-i ./my-inventory' arguments to specify the inventory file to use.
+
+MY SOLUTION:
+(py27_venv)[wantonik@ip-172-30-0-209 class1]$ ansible localhost -i ./my_inventory.e3c, -m ping 
+localhost | SUCCESS => {
+    "changed": false, 
+    "ping": "pong"
+}
+(py27_venv)[wantonik@ip-172-30-0-209 class1]$
+
+PROBLEMS:
+The above didnt work against 'local' group due to 3 issues:
+1. my_inventory.e3b file was incorrect i.e.
+
+1.1. I had typo:
+I had ansible-connection instead of ansible_connection in there.
+
+1.2 ansible_python_interpreter viariable was as 2nd line in the local group.
+It should always be in the same line for 'localhost', otherwise Ansible
+will treat this varialbe as 2nd entry for the local group.
+
+2. I used ',' [comma] in my ansible-command above. Once removed I was able
+to ping localhost and local group successfully:
+
+(py27_venv)[wantonik@ip-172-30-0-209 class1]$ ansible local -i ./my_inventory.e3b -m ping
+localhost | SUCCESS => {
+    "changed": false, 
+    "ping": "pong"
+}
+(py27_venv)[wantonik@ip-172-30-0-209 class1]$ ansible localhost -i ./my_inventory.e3b -m ping
+localhost | SUCCESS => {
+    "changed": false, 
+    "ping": "pong"
+}
+
+END/SOLVED

@@ -1,0 +1,22 @@
+---
+# See "Variables" video to gain more understanding of the below.
+# Here I am trying to print out one of the variables returned by 
+# the 'setup' module when used with the below command:
+# $ansible local -m setup -v
+
+- hosts: local
+  tasks: 
+  - name: Using debug module to print out Ansible variables
+    debug:
+      msg: "{{ ansible_host }}"
+  - name: Print out another variable
+    debug:
+      msg: "{{ ansible_all_ipv4_addresses }}"
+  - name: Print out ansible_user_id variable
+    debug:
+      msg: "{{ ansible_user_id }}"
+  - name: Print out ansible_system variable
+    debug:
+      msg: "{{ ansible_system }}"
+
+...

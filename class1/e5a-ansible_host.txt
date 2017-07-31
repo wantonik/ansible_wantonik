@@ -1,0 +1,32 @@
+5. Create a new playbook that uses the debug module to print out Ansible variables. You will have something similar to the following in the playbook's tasks section: 
+    tasks: 
+      - debug:
+          msg: "{{ some_variable }}"
+     
+   a. Run this playbook against the two Cisco routers and print out the {{ ansible_host }} variable which should map to the IP address. 
+--------------------------------
+
+MY SOLUTION:
+
+
+(py27_venv)[wantonik@ip-172-30-0-209 class1]$ ansible-playbook -i ./my_inventory e3c-playbook.yml
+
+PLAY [cisco] **********************************************************************************************
+
+TASK [Gathering Facts] ************************************************************************************
+ok: [pynet-rtr1]
+ok: [pynet-rtr2]
+
+TASK [Using debug module to print out Ansible variables] **************************************************
+ok: [pynet-rtr1] => {
+    "msg": "184.105.247.70"
+}
+ok: [pynet-rtr2] => {
+    "msg": "184.105.247.71"
+}
+
+PLAY RECAP ************************************************************************************************
+pynet-rtr1                 : ok=2    changed=0    unreachable=0    failed=0   
+pynet-rtr2                 : ok=2    changed=0    unreachable=0    failed=0   
+
+(py27_venv)[wantonik@ip-172-30-0-209 class1]$

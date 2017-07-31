@@ -1,0 +1,30 @@
+# 5c. Add a "Host Var" for the variable remote_as_number. 
+# This variable should have a value of 200 for pynet-rtr1 and
+# a value of 300 for pynet-rtr2.
+# Once again use the debug task from exercise5 to verify you properly
+# see this variable when you execute a playbook.
+
+MY OUTPUT (correct):
+
+(py27_venv)[wantonik@ip-172-30-0-209 class1]$ ansible-playbook -i ./my_inventory e5c-playbook.yml 
+
+PLAY [cisco] ***********************************************************************************************
+
+TASK [Gathering Facts] *************************************************************************************
+ok: [pynet-rtr2]
+ok: [pynet-rtr1]
+
+TASK [Print out local_as number variable with debug module] ************************************************
+ok: [pynet-rtr1] => {
+    "msg": 200
+}
+ok: [pynet-rtr2] => {
+    "msg": 300
+}
+
+PLAY RECAP *************************************************************************************************
+pynet-rtr1                 : ok=2    changed=0    unreachable=0    failed=0   
+pynet-rtr2                 : ok=2    changed=0    unreachable=0    failed=0   
+
+(py27_venv)[wantonik@ip-172-30-0-209 class1]$ 
+

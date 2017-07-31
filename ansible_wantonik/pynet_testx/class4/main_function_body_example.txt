@@ -1,0 +1,10 @@
+import <module>
+
+def main():
+    statement1
+    statement2
+    ...
+    statementN
+
+if __name__ = "__main__":
+    main()

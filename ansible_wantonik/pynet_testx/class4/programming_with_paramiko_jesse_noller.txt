@@ -1,0 +1,34 @@
+SSH Programming with Paramiko - Completely Different
+From:
+http://jessenoller.com/blog/2009/02/05/ssh-programming-with-paramiko-completely-different
+
+Based on the example in there:
+
+1. RUN COMMAND ON LOCAL MACHINE
+>>> import paramiko
+>>> 
+>>> ssh=paramiko.SSHClient()
+>>> ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+>>> ssh.connect('127.0.0.1', username='breadfan', password='garageinc')
+>>> stdin,stdout,stderr = ssh.exec_command("uptime")
+>>> type(stdin)
+<class 'paramiko.channel.ChannelFile'>
+>>> stdout.readlines()
+[u' 18:12:01 up 22:10,  4 users,  load average: 0.11, 0.17, 0.17\n']
+>>> ssh.close()
+
+2. RUN COMMAND ON REMOTE HOST
+breadfan@breadfan-ThinkPad-X200T:~$ python
+Python 2.7.12 (default, Jul  1 2016, 15:12:24) 
+[GCC 5.4.0 20160609] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import paramiko
+>>> ssh=paramiko.SSHClient()
+>>> ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+>>> ssh.connect('51.171.33.223', username='breadfan', password='bluesoul')
+>>> stdin,stdout,stderr = ssh.exec_command("uptime")
+>>> type(stdin)
+<class 'paramiko.channel.ChannelFile'>
+>>> stdout.readlines()
+[u' 11:52:30 up 1 day, 12:42,  1 user,  load average: 0.00, 0.03, 0.00\n']
+>>> ssh.close()
